@@ -20,6 +20,7 @@ app.get('/v1/getblockcount', (request, response) => {
 
 app.get('/v1/getpoolpair', (request, response) => {
     console.log('returning getpoolpair to API');
+    // TODO: Parse ID param as int to avoid passing directly to shell (insecure)
     let command = "/opt/defi/bin/defi-cli getpoolpair " + request.query.id;
     execShellCommand(command, request, response)
 });

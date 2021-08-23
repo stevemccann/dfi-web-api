@@ -39,6 +39,7 @@ while sleep 60; do
   # echo "Checking services are still running..."
   ps aux |grep defid |grep -q -v grep
   PROCESS_1_STATUS=$?
+  # TODO: Validate that the check below correctly catches a running or failed Node.JS instnace
   ps aux |grep node |grep -q -v grep
   PROCESS_2_STATUS=$?
   # If the greps above find anything, they exit with 0 status

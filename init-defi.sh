@@ -43,4 +43,8 @@ echo "Starting docker container"
 cd docker
 docker-compose up --build --detach
 
+# TODO: Fix issue with Dockerfile not running npm install
+docker exec -it dfi-web-api npm install
+docker restart dfi-web-api --time 30
+
 echo '\n\nFinished init script!'
