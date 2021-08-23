@@ -8,7 +8,7 @@ NODE_DELAY_SEC=15
 echo "Attempting to start DFI daemon and Node.JS API"
 
 # Start the first process
-/opt/defichain/bin/defid &
+/opt/defi/bin/defid &
 status=$?
 if [ $status -ne 0 ]; then
   echo "Failed to start defi node: $status"
@@ -36,7 +36,7 @@ fi
 # Otherwise it loops forever, waking up every 60 seconds
 
 while sleep 60; do
-  echo "Checking services are still running..."
+  # echo "Checking services are still running..."
   ps aux |grep defid |grep -q -v grep
   PROCESS_1_STATUS=$?
   ps aux |grep node |grep -q -v grep
