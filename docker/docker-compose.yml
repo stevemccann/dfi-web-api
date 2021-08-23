@@ -1,0 +1,25 @@
+# This service runs a Defichain node in a docker container as well as a Node.JS REST API
+# to query the Defi node.
+#
+# Author: Steve McCann <steven.r.mccann@gmail.com>
+
+version: '3.7'
+
+services:
+
+  dfi-node:
+    # image: node:16.6.2
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: dfi-web-api
+    working_dir: /home/node/app
+    volumes:
+      - ../data/dfi-node/defichain-1.8.2:/opt/defi
+      - ../data/dfi-node/defi:/root/.defi
+      - ../node-api:/home/node/app
+      - ../starter-scripts:/home/node/starter-scripts
+    restart: unless-stopped
+    command: /home/node/starter-scripts/service-wrapper.sh
+    ports:
+      - 8333:8333
