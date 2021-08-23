@@ -27,8 +27,10 @@ app.get('/v1/getpoolpair', (request, response) => {
 function execShellCommand (cmd, request, response) {
   execSh(cmd, true,
     (err, stdout, stderr) => {
-        if (err) console.log("error: ", err);
-        if (stderr) console.log("stderr: ", stderr);
+        if (err) console.log("error: ", cmd, err);
+        if (stderr) console.log("stderr: ", cmd, stderr);
+        // Not sending a JSON response since the CLI output contains line breaks
+        // TODO: Parse out CLI line breaks to be able to send JSON response.
         response.send(stdout);
     });
 }
