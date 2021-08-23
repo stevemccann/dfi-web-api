@@ -14,13 +14,13 @@ app.get('/', (request, response) => {
   
 app.get('/v1/getblockcount', (request, response) => {
     console.log('returning getblockcount to API');
-    let command = "/opt/defichain/bin/defi-cli getblockcount";
+    let command = "/opt/defi/bin/defi-cli getblockcount";
     execShellCommand(command, request, response);
 });
 
 app.get('/v1/getpoolpair', (request, response) => {
     console.log('returning getpoolpair to API');
-    let command = "/opt/defichain/bin/defi-cli getpoolpair " + request.query.id;
+    let command = "/opt/defi/bin/defi-cli getpoolpair " + request.query.id;
     execShellCommand(command, request, response)
 });
 
